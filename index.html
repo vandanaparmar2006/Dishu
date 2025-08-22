@@ -139,6 +139,8 @@
   </style>
 </head>
 <body>
+  <audio id="bg-music" src="Tu Maro Dariyo - PagalHits.mp3" autoplay loop muted controls></audio>
+
   <div class="bg-hearts">
     <!-- Floating hearts -->
     <span style="left:10%;">❤️</span>
@@ -191,9 +193,16 @@
   </script>
 
  
-  <audio autoplay loop>
-    <source src="Tu Maro Dariyo - PagalHits.mp3" type="mp3 ">
-  </audio>
+const music = document.getElementById('bg-music');
+    const startMusic = () => {
+      music.muted = false;
+      music.play();
+      document.removeEventListener('click', startMusic);
+      document.removeEventListener('touchstart', startMusic);
+    };
+
+    document.addEventListener('click', startMusic);
+    document.addEventListener('touchstart', startMusic);
   
 
 </body>
